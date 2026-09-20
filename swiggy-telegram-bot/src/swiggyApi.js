@@ -586,7 +586,7 @@ async function apiRequestSafe(url, method = 'GET', body = null, retry = 0) {
 
     if (isRateLimited) {
       if (retry >= 3) return null;
-      const waitSec = 8 + Math.floor(Math.random() * 4);
+      const waitSec = 20 + Math.floor(Math.random() * 11);
       console.warn(`[SwiggyAPI] Rate-limited (retry ${retry + 1}/3, CloudFront limit: ${isCloudfrontRateLimited}). Waiting ${waitSec}s...`);
       await sleep(waitSec * 1000);
       return apiRequestSafe(url, method, body, retry + 1);
